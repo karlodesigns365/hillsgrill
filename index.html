@@ -328,6 +328,10 @@
             if (translations[lang][key]) {
                 elem.innerHTML = translations[lang][key];
             }
+			const f = document.querySelector('[data-key="rights"]');
+			if (lang === 'hr') f.innerHTML = "Sva prava <strong>pridržana</strong>";
+			if (lang === 'de') f.innerHTML = "Alle Rechte <strong>vorbehalten</strong>";
+			if (lang === 'en') f.innerHTML = "All rights <strong>reserved</strong>";
         });
 
         // Update Active State on Flags
@@ -368,7 +372,7 @@
         <div data-aos="fade-up">
             <img src="LogoFavicon.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
             <p>© 2026 <strong>Catering Hills</strong> | HILLS GRILL brand</p>
-            <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;">Sva prava <strong>pridržana</strong></p>
+            <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;" data-key="rights">Sva prava <strong>pridržana</strong></p>
 			<p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;">hillsgrill.prodaja@proton.me</p>
         </div>
     </footer>
