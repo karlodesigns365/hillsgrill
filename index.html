@@ -211,10 +211,10 @@
                 <label data-key="labelCompany">Naziv Tvrtke / Obrta (Opcionalno)</label>
                 <input type="text" name="tvrtka" placeholder="Naziv subjekta">
             </div>
-            <div>
-                <label>OIB (Opcionalno)</label>
-                <input type="text" name="oib" placeholder="OIB tvrtke">
-            </div>
+			<div>
+				<label data-key="labelOib">OIB (Opcionalno)</label>
+				<input type="text" name="oib" placeholder="OIB tvrtke">
+			</div>
             <div>
                 <label>E-mail Adresa</label>
                 <input type="email" name="email" placeholder="vas@email.com" required>
@@ -240,7 +240,7 @@
 </section>
 
 <script>
-    // --- MULTILANGUAGE LOGIC ---
+// --- MULTILANGUAGE LOGIC ---
     const translations = {
         hr: {
             wholesale: "VELEPRODAJA",
@@ -266,7 +266,16 @@
             labelType: "Tip suradnje",
             labelMsg: "Vaša Poruka",
             labelBtn: "POŠALJI UPIT",
-            opt1: "Maloprodaja (Trgovina)", opt2: "HORECA (Restoran/Hotel)", opt3: "Distribucija / Veleprodaja", opt4: "Ostalo"
+            opt1: "Maloprodaja (Trgovina)", opt2: "HORECA (Restoran/Hotel)", opt3: "Distribucija / Veleprodaja", opt4: "Ostalo",
+            phName: "Vaše ime",
+            phCompany: "Naziv subjekta",
+            phOib: "OIB tvrtke",
+            phEmail: "vas@email.com",
+            phMsg: "Vaš upit...",
+            sending: "SLANJE...",
+            sent: "POSLANO",
+            success: "USPJEŠNO POSLANO!",
+			labelOib: "OIB (Opcionalno)"
         },
         de: {
             wholesale: "GROSSHANDEL",
@@ -275,24 +284,33 @@
             heroSub: "Tradition, die man beim ersten Bissen erkennt.",
             viewOffer: "ANGEBOT ANSEHEN",
             storyTitle: "Qualität, die überzeugt",
-            storyP1: "Die Geschichte von Hills Grill begann in einer kleinen Familienmetzgerei mit einem klaren Ziel – kompromisslose Qualität für lokale Kunden anzubieten. Sehr schnell wurde unser Engagement von professionellen Gastronomen erkannt: von Fast-Food-Läden und Bistros bis hin zu Spitzenrestaurants.",
-            storyP2: "Heute beliefern wir stolz Partner in den Regionen Zagreb, Krapina, Bjelovar und Varaždin, während unsere Produkte immer häufiger auf den Speisekarten renommierter Objekte in Istrien und Dalmatien zu finden sind.",
-            quote: '"Unser Geheimnis liegt in der Einfachheit: ausgewähltes Rindfleisch mit 15% Schweinefleisch für perfekte Saftigkeit. Wir haben beschlossen, diese Qualität das ganze Jahr über durch ein Sortiment an tiefgekühlten Produkten verfügbar zu machen – professioneller Standard in Ihrer Küche."',
+            storyP1: "Die Geschichte von Hills Grill begann in einer kleinen Familienmetzgerei mit einem klaren Ziel – kompromisslose Qualität für lokale Kunden anzubieten. Sehr schnell wurde unser Engagement von professionellen Gastronomen erkannt.",
+            storyP2: "Heute beliefern wir stolz Partner in den Regionen Zagreb, Krapina, Bjelovar und Varaždin, während unsere Produkte immer häufiger in Istrien und Dalmatien zu finden sind.",
+            quote: '"Unser Geheimnis liegt in der Einfachheit: ausgewähltes Rindfleisch mit 15% Schweinefleisch für perfekte Saftigkeit. Wir bieten professionellen Standard in Ihrer Küche."',
             featured: "Ausgewählte Produkte",
             p1Title: "Gourmet Burger",
             p1Desc: "Unser bekanntes Rezept mit Speckstückchen und feinstem Käse. Das gefragteste Produkt im Sortiment.",
             p2Title: "Burger mit Käse",
             p2Desc: "Saftiges Inneres mit reichlich geschmolzenem Käse. Ideal für die schnelle Zubereitung auf dem Grill.",
             p3Title: "Šiš Ćevapi",
-            p3Desc: "Pikant, handgeformt und ausschließlich aus ausgewählten Rind- und Schweinefleischstücken nach Tradition hergestellt.",
+            p3Desc: "Pikant, handgeformt und ausschließlich aus ausgewählten Rind- und Schweinefleischstücken hergestellt.",
             formTitle: "Partner Werden",
-            formSub: "An Vertrieb interessiert? Füllen Sie das Formular aus und wir melden uns bei Ihnen.",
-            labelName: "Vor- und Nachname",
+            formSub: "An Vertrieb interessiert? Füllen Sie das Formular aus und wir melden uns.",
+            labelName: "Vor - und Nachname",
             labelCompany: "Firma / Unternehmen (Optional)",
             labelType: "Art der Zusammenarbeit",
             labelMsg: "Ihre Nachricht",
             labelBtn: "ANFRAGE SENDEN",
-            opt1: "Einzelhandel", opt2: "HORECA", opt3: "Vertrieb / Großhandel", opt4: "Andere"
+            opt1: "Einzelhandel", opt2: "HORECA", opt3: "Vertrieb / Großhandel", opt4: "Andere",
+            phName: "Ihr Name",
+            phCompany: "Name des Unternehmens",
+            phOib: "OIB Nummer",
+            phEmail: "ihre@email.de",
+            phMsg: "Ihre Anfrage...",
+            sending: "SENDEN...",
+            sent: "GESENDET",
+            success: "ERFOLGREICH GESENDET!",
+			labelOib: "OIB (Optional)"
         },
         en: {
             wholesale: "WHOLESALE",
@@ -301,16 +319,16 @@
             heroSub: "Tradition recognized at the first bite.",
             viewOffer: "VIEW OFFER",
             storyTitle: "Quality that Conquers",
-            storyP1: "The Hills Grill story began in a small family butchery with a clear goal – to offer uncompromising quality to local customers. Very quickly, our commitment was recognized by professional caterers: from fast food joints and bistros to top-tier restaurants.",
-            storyP2: "Today, we proudly supply partners throughout Zagreb, Krapina-Zagorje, Bjelovar-Bilogora, and Varaždin counties, while our products are increasingly found on the menus of renowned establishments in Istria and Dalmatia.",
-            quote: '"Our secret is in simplicity: selected beef with the addition of 15% pork for perfect juiciness. We decided to make that quality available year-round through a range of deep-frozen products – professional standard in your kitchen."',
+            storyP1: "The Hills Grill story began in a small family butchery with a clear goal – to offer uncompromising quality to local customers. Very quickly, our commitment was recognized by professional caterers.",
+            storyP2: "Today, we proudly supply partners throughout Croatia, while our products are increasingly found on the menus of renowned establishments.",
+            quote: '"Our secret is in simplicity: selected beef with the addition of 15% pork for perfect juiciness. We decided to make that quality available year-round – professional standard in your kitchen."',
             featured: "Featured Products",
             p1Title: "Gourmet Burger",
             p1Desc: "Our famous recipe with pieces of smoked bacon and premium cheese. The most popular product.",
             p2Title: "Burger with Cheese",
             p2Desc: "Juicy interior with rich melted cheese. Ideal for quick preparation on the grill or pan.",
             p3Title: "Šiš Ćevapi",
-            p3Desc: "Spicy, hand-shaped and made exclusively from selected cuts of beef and pork according to tradition.",
+            p3Desc: "Spicy, hand-shaped and made exclusively from selected cuts of beef and pork.",
             formTitle: "Become a Partner",
             formSub: "Interested in distribution? Fill out the form and we will contact you.",
             labelName: "Full Name",
@@ -318,29 +336,52 @@
             labelType: "Type of Cooperation",
             labelMsg: "Your Message",
             labelBtn: "SEND INQUIRY",
-            opt1: "Retail", opt2: "HORECA", opt3: "Distribution / Wholesale", opt4: "Other"
+            opt1: "Retail", opt2: "HORECA", opt3: "Distribution / Wholesale", opt4: "Other",
+            phName: "Your name",
+            phCompany: "Company name",
+            phOib: "VAT number",
+            phEmail: "your@email.com",
+            phMsg: "Your inquiry...",
+            sending: "SENDING...",
+            sent: "SENT",
+            success: "SUCCESSFULLY SENT!",
+			labelOib: "VAT number (Optional)"
         }
     };
 
+    let currentLang = 'hr';
+
     function changeLang(lang, event) {
+        currentLang = lang;
+        
+        // 1. Tekstovi
         document.querySelectorAll('[data-key]').forEach(elem => {
             const key = elem.getAttribute('data-key');
             if (translations[lang][key]) {
                 elem.innerHTML = translations[lang][key];
             }
-			const f = document.querySelector('[data-key="rights"]');
-			if (lang === 'hr') f.innerHTML = "Sva prava <strong>pridržana</strong>";
-			if (lang === 'de') f.innerHTML = "Alle Rechte <strong>vorbehalten</strong>";
-			if (lang === 'en') f.innerHTML = "All rights <strong>reserved</strong>";
         });
 
-        // Update Active State on Flags
-        document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
+        // 2. Footer rights (posebno zbog strong taga)
+        const f = document.querySelector('[data-key="rights"]');
+        if (lang === 'hr') f.innerHTML = "Sva prava <strong>pridržana</strong>";
+        if (lang === 'de') f.innerHTML = "Alle Rechte <strong>vorbehalten</strong>";
+        if (lang === 'en') f.innerHTML = "All rights <strong>reserved</strong>";
+
+        // 3. PLACEHOLDERI (Ovdje je bio problem)
+        document.querySelector('input[name="ime"]').placeholder = translations[lang].phName;
+        document.querySelector('input[name="tvrtka"]').placeholder = translations[lang].phCompany;
+        document.querySelector('input[name="oib"]').placeholder = translations[lang].phOib;
+        document.querySelector('input[name="email"]').placeholder = translations[lang].phEmail;
+        document.querySelector('textarea[name="poruka"]').placeholder = translations[lang].phMsg;
+
+        // 4. Update aktivne zastavice
+        document.querySelectorAll('.lang-flag').forEach(flag => flag.classList.remove('active'));
         if (event) event.currentTarget.classList.add('active');
     }
 
     // --- FORM LOGIC ---
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwt2A5MX5SrugSvYE1u0kf4XRdso_UAjPfy1fbJ25eVyZ1luuXd8Jee4pMVE6yAXBo/exec'; 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby8MqaQwQ-ew0VsZ8JmXmRo4rqzjZ8k-b5dPVn8ZmVsBj8nJz3SxArT8EnCbX2j0ruGQA/exec'; 
     const form = document.getElementById('contactForm');
     const btn = document.getElementById('submitBtn');
     const status = document.getElementById('formStatus');
@@ -348,7 +389,7 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
         btn.disabled = true;
-        btn.innerText = '...';
+        btn.innerText = translations[currentLang].sending;
         
         fetch(scriptURL, { 
             method: 'POST', 
@@ -356,14 +397,15 @@
             mode: 'no-cors'
         })
         .then(() => {
-            status.innerHTML = "<span style='color: var(--gold); font-weight: bold;'>OK!</span>";
+            status.innerHTML = `<span style='color: var(--gold); font-weight: bold;'>${translations[currentLang].success}</span>`;
             form.reset();
-            btn.innerText = 'SENT';
+            btn.innerText = translations[currentLang].sent;
             btn.disabled = false;
         })
         .catch(error => {
             console.error('Error!', error.message);
             btn.disabled = false;
+            btn.innerText = translations[currentLang].labelBtn;
         });
     });
 </script>
@@ -373,7 +415,7 @@
             <img src="LogoFavicon.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
             <p>© 2026 <strong>Catering Hills</strong> | HILLS GRILL brand</p>
             <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;" data-key="rights">Sva prava <strong>pridržana</strong></p>
-			<p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;">hillsgrill.prodaja@proton.me</p>
+			<p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;">hillsgrill.prodaja@gmail.com</p>
         </div>
     </footer>
 
