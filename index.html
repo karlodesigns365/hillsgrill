@@ -138,31 +138,68 @@
             .quote-box p { font-size: 1.1rem; }
             .nav-right { gap: 10px; }
         }
+		
+	.btn-gold-nav {
+		padding: 10px 15px;
+		background: var(--gold);
+		color: var(--dark);
+		font-weight: 900;
+		text-transform: uppercase;
+		border-radius: 4px;
+		display: inline-block;
+		transition: 0.3s;
+		text-decoration: none;
+		font-size: 0.75rem;
+		letter-spacing: 0.5px;
+	}
+		.btn-gold-nav:hover { background: var(--white); }
+
+		.btn-shop {
+		padding: 10px 15px;
+		background: transparent;
+		color: var(--white);
+		font-weight: 700;
+		text-transform: uppercase;
+		border-radius: 4px;
+		display: inline-block;
+		transition: 0.3s;
+		text-decoration: none;
+		border: 1px solid var(--white);
+		font-size: 0.75rem;
+		letter-spacing: 0.5px;
+	}
+		.btn-shop:hover { 
+		background: var(--white); 
+		color: var(--dark); 
+	}
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-logo"><img src="LogoFavicon.png" alt="HILLS GRILL"></div>
-        <div class="nav-right">
-            <div class="lang-switcher">
-                <img src="https://flagcdn.com/w40/hr.png" class="lang-flag active" onclick="changeLang('hr', event)" alt="HR">
-                <img src="https://flagcdn.com/w40/de.png" class="lang-flag" onclick="changeLang('de', event)" alt="DE">
-                <img src="https://flagcdn.com/w40/gb.png" class="lang-flag" onclick="changeLang('en', event)" alt="EN">
-            </div>
-            <a href="#suradnja" class="btn-gold" data-key="wholesale" style="padding: 10px 20px; font-size: 0.7rem;">VELEPRODAJA</a>
+<nav>
+    <div class="nav-logo"><img src="LogoFavicon.png" alt="HILLS GRILL"></div>
+    <div class="nav-right">
+        <div class="lang-switcher">
+            <img src="https://flagcdn.com/w40/hr.png" class="lang-flag active" onclick="changeLang('hr', event)" alt="HR">
+            <img src="https://flagcdn.com/w40/de.png" class="lang-flag" onclick="changeLang('de', event)" alt="DE">
+            <img src="https://flagcdn.com/w40/gb.png" class="lang-flag" onclick="changeLang('en', event)" alt="EN">
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content" data-aos="fade-up">
-            <p data-key="heroPre" style="letter-spacing: 5px; color: var(--gold); font-weight: 700;">PREMIUM SELEKCIJA MESA</p>
-            <h1 data-key="heroTitle">HILLS <span>GRILL</span></h1>
-            <p data-key="heroSub">Tradicija koja se prepoznaje na prvi zalogaj.</p>
-            <a href="#proizvodi" data-key="viewOffer" class="btn-gold">POGLEDAJ PONUDU</a>
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content" data-aos="fade-up">
+        <p data-key="heroPre" style="letter-spacing: 5px; color: var(--gold); font-weight: 700;">PREMIUM SELEKCIJA MESA</p>
+        <h1 data-key="heroTitle">HILLS <span>GRILL</span></h1>
+        <p data-key="heroSub">Tradicija koja se prepoznaje na prvi zalogaj.</p>
+        
+        <div class="hero-buttons" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="mesnica.html" data-key="retailShop" class="btn-gold" style="background: transparent; color: var(--white); border: 2px solid var(--gold);">WEB SHOP / MESNICA</a>
+            <a href="#suradnja" data-key="wholesale" class="btn-gold" style="background: #ffffff; color: var(--dark);">VELEPRODAJA / B2B</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="story-section">
         <div class="story-container" data-aos="fade-up">
@@ -243,7 +280,8 @@
 // --- MULTILANGUAGE LOGIC ---
     const translations = {
         hr: {
-            wholesale: "VELEPRODAJA",
+			wholesale: "VELEPRODAJA / B2B",
+			retailShop: "MESNICA",
             heroPre: "PREMIUM SELEKCIJA MESA",
             heroTitle: "HILLS <span>GRILL</span>",
             heroSub: "Tradicija koja se prepoznaje na prvi zalogaj.",
@@ -278,7 +316,8 @@
 			labelOib: "OIB (Opcionalno)"
         },
         de: {
-            wholesale: "GROSSHANDEL",
+			wholesale: "GROSSHANDEL / B2B",
+			retailShop: "METZGEREI",
             heroPre: "PREMIUM FLEISCH SELEKTION",
             heroTitle: "HILLS <span>GRILL</span>",
             heroSub: "Tradition, die man beim ersten Bissen erkennt.",
@@ -313,7 +352,8 @@
 			labelOib: "OIB (Optional)"
         },
         en: {
-            wholesale: "WHOLESALE",
+			wholesale: "WHOLESALE / B2B",
+			retailShop: "BUTCHER SHOP",
             heroPre: "PREMIUM MEAT SELECTION",
             heroTitle: "HILLS <span>GRILL</span>",
             heroSub: "Tradition recognized at the first bite.",

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HILLS GRILL | Naručite svježe meso online</title>
+	<meta name="description" content="Naručite vrhunsko svježe meso, pljeskavice, ćevapi, grill, Hills Grill online mesnice. Brza dostava na Vaša vrata, svježe i spremno za roštilj.">
+	<meta name="keywords" content="hills grill, online mesnica, eMesnica, emesnica, dostava svježeg mesa, pljeskavice, ćevapi, svježe meso, roštilj, mesnica zagreb, grill dostava">
+    <link rel="icon" type="image/png" href="LogoFavicon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c6a362;
+            --dark: #0a0a0a;
+            --gray: #161616;
+            --white: #ffffff;
+            --green: #2ecc71;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--dark); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+        
+        nav { 
+            background: rgba(0,0,0,0.95); 
+            padding: 10px 5%; 
+            position: fixed; 
+            width: 100%; 
+            z-index: 1000; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 2px solid var(--gold); 
+        }
+        .nav-logo img { height: 60px; width: auto; }
+
+        .hero-shop {
+            height: 40vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('Hero.jpg') no-repeat center center/cover;
+        }
+
+        .hero-shop h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 3.5rem); color: var(--white); }
+        .hero-shop h1 span { color: var(--gold); }
+
+        .btn-gold {
+            padding: 12px 30px;
+            background: var(--gold);
+            color: var(--dark);
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            transition: 0.3s;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold:hover { background: var(--white); transform: scale(1.02); }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 40px 5%; }
+        
+        /* Cart Bar Info */
+        .cart-bar {
+            background: var(--gray);
+            border: 1px solid var(--gold);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: sticky;
+            top: 90px;
+            z-index: 900;
+            transition: all 0.3s ease;
+        }
+        .cart-info-text h3 { color: var(--gold); }
+        .shipping-alert { font-size: 0.9rem; font-weight: 700; }
+
+        .section-title { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2rem; margin: 40px 0 20px; border-left: 4px solid var(--gold); padding-left: 15px; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .card { background: var(--gray); border-radius: 8px; overflow: hidden; border: 1px solid rgba(198, 163, 98, 0.1); transition: 0.4s; display: flex; flex-direction: column; }
+        .card:hover { border-color: var(--gold); }
+        .card-img { height: 220px; width: 100%; overflow: hidden; position: relative; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card h3 { color: var(--white); font-size: 1.25rem; margin-bottom: 10px; font-weight: 700; min-height: 50px; }
+        .card .price { color: var(--gold); font-size: 1.4rem; font-weight: 900; margin-bottom: 15px; }
+        .card .pack-list { font-size: 0.85rem; color: #aaa; margin-bottom: 20px; list-style-type: square; padding-left: 20px; }
+        
+        /* Sliders for KG products */
+        .slider-container { margin: 15px 0; }
+        .slider-container label { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--gold); margin-bottom: 5px; }
+        .weight-slider { width: 100%; accent-color: var(--gold); margin: 10px 0; }
+        .weight-display { font-weight: 700; color: var(--white); background: #222; padding: 2px 8px; border-radius: 4px; }
+
+        /* Checkout Section */
+        .checkout-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; background: var(--gray); padding: 40px; border-radius: 8px; border-top: 3px solid var(--gold); }
+        .checkout-section h2 { color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+        
+        .cart-summary-list { list-style: none; }
+        .cart-summary-list li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; font-size: 0.95rem; }
+        .cart-summary-list li span.remove-item { color: #ff4d4d; cursor: pointer; margin-left: 10px; font-weight: 700; }
+        .total-row { font-size: 1.3rem; font-weight: 900; color: var(--gold); border-top: 2px solid var(--gold) !important; padding-top: 15px !important; }
+
+        form { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        input, textarea { width: 100%; padding: 12px; background: #222; border: 1px solid #333; color: white; border-radius: 4px; font-family: inherit; }
+        input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+        label { display: block; margin-bottom: 5px; font-size: 0.8rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .note { font-size: 0.8rem; color: #aaa; margin-top: 5px; }
+
+        /* Pop-up obavijest za mobitele */
+        .cart-toast {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--dark);
+            padding: 15px 30px;
+            font-weight: 700;
+            border-radius: 30px;
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: top 0.4s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .cart-toast.show { top: 100px; }
+
+        footer { padding: 40px 5%; text-align: center; background: #000; border-top: 1px solid var(--gold); margin-top: 80px; }
+        footer strong { color: var(--gold); }
+
+        @media (max-width: 900px) {
+            .grid, .checkout-section { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            
+            /* Fiksna košarica na dnu ekrana za mobitele */
+            .cart-bar { 
+                position: fixed; 
+                bottom: 0; 
+                top: auto; 
+                left: 0;
+                width: 100%;
+                margin-bottom: 0;
+                border-radius: 0;
+                border-top: 2px solid var(--gold);
+                border-left: none;
+                border-right: none;
+                border-bottom: none;
+                padding: 12px 5%;
+                z-index: 1000;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px;
+            }
+            .cart-info-text h3 { font-size: 0.9rem; }
+            .cart-info-text p { font-size: 0.85rem; }
+            .shipping-alert { grid-column: span 2; font-size: 0.75rem; text-align: center; border-top: 1px solid #222; padding-top: 5px; }
+            .cart-bar div:nth-child(3) { text-align: right; }
+            .cart-bar .btn-gold { padding: 8px 15px; font-size: 0.7rem; }
+            
+            .container { padding-bottom: 120px; } /* Prostor da fiksna košarica ne pokrije sadržaj */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pop-up obavijest -->
+    <div id="toast" class="cart-toast">Dodano u košaricu! 🥩</div>
+
+    <nav>
+        <div class="nav-logo"><img src="LogoFavicon.png" alt="HILLS GRILL"></div>
+        <div>
+            <a href="index.html" class="btn-gold" style="padding: 10px 20px; font-size: 0.75rem; background: transparent; color: var(--white); border: 1px solid var(--gold);">VELEPRODAJA / B2B</a>
+        </div>
+    </nav>
+
+    <section class="hero-shop">
+        <div data-aos="fade-up">
+            <h1>HILLS <span>MESNICA</span></h1>
+            <p style="letter-spacing: 3px; color: var(--gold); font-weight: 300; margin-top: 5px;">DOSTAVA PREMIUM MESA</p>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- STICKY / FIXED CART BAR -->
+        <div class="cart-bar">
+            <div class="cart-info-text">
+                <h3>Košarica: <span id="bar-count">0</span> art.</h3>
+                <p>Ukupno: <span id="bar-total" style="font-weight: 900; color: var(--white);">0.00 EUR</span></p>
+            </div>
+            <div>
+                <a href="#blagajna" class="btn-gold" style="font-size: 0.8rem; padding: 10px 20px;">BLAGAJNA</a>
+            </div>
+            <div class="shipping-alert" id="shipping-status">
+                Minimalna narudžba za dostavu je 40.00 EUR.
+            </div>
+        </div>
+
+        <!-- SEKCIJA 1: PAKETI -->
+        <h2 class="section-title" data-aos="fade-right">HILLS GRILL PAKETI</h2>
+        <div class="grid">
+            
+            <!-- Paket 1 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-img"><img src="Gurmanska.jpeg" alt="HILLS GURMAN GRILL PAKET"></div>
+                <div class="card-body">
+                    <div>
+                        <h3>HILLS GURMAN GRILL PAKET (554g)</h3>
+                        <ul class="pack-list">
+                            <li>2x Šiš ćevap</li>
+                            <li>2x Gurmanska pljeskavica</li>
+                            <li>6x Gurmanski ćevap</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price">5.25 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
+                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS GURMAN GRILL PAKET (554g)', 5.25, 1, 'kom')">DODAJ U KOŠARICU</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 2 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img"><img src="HillsClassic.jpg" alt="HILLS CLASIC GRILL PAKET"></div>
+                <div class="card-body">
+                    <div>
+                        <h3>HILLS CLASIC GRILL PAKET (630g)</h3>
+                        <ul class="pack-list">
+                            <li>6x Ćevap</li>
+                            <li>2x Pljeskavica</li>
+                            <li>2x Pljeskavica punjena sirom</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price">5.78 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
+                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS CLASIC GRILL PAKET (630g)', 5.78, 1, 'kom')">DODAJ U KOŠARICU</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 3 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img"><img src="Cevapi.jpg" alt="HILLS ĆEVAPČIĆI"></div>
+                <div class="card-body">
+                    <div>
+                        <h3>HILLS ĆEVAPČIĆI (500g)</h3>
+                        <ul class="pack-list">
+                            <li>20 Ćevapčića</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price">4.73 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
+                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS ĆEVAPČIĆI (500g)', 4.73, 1, 'kom')">DODAJ U KOŠARICU</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 4 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-img"><img src="Pljeskavica.jpg" alt="HILLS PLJESKAVICE"></div>
+                <div class="card-body">
+                    <div>
+                        <h3>HILLS PLJESKAVICE (600g)</h3>
+                        <ul class="pack-list">
+                            <li>5 Pljeskavica</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price">5.04 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
+                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS PLJESKAVICE (600g)', 5.04, 1, 'kom')">DODAJ U KOŠARICU</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 5 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img"><img src="SisCevapi.jpg" alt="HILLS ŠIŠ ĆEVAPI"></div>
+                <div class="card-body">
+                    <div>
+                        <h3>HILLS ŠIŠ ĆEVAPI (500g)</h3>
+                        <ul class="pack-list">
+                            <li>6 Šiš ćevapa</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price">5.78 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
+                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS ŠIŠ ĆEVAPI (500g)', 7.23, 1, 'kom')">DODAJ U KOŠARICU</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 6 -->
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img"><img src="PljeskaviceSir.jpg" alt="HILLS PLJESKAVICE PUNJENE SIROM"></div>
+                <div class="card-body">
+                    <div>
+                        <h3>PLJESKAVICE PUNJENE SIROM (480g)</h3>
+                        <ul class="pack-list">
+                            <li>4 Punjene pljeskavice</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price">5.78 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
+                        <button class="btn-gold" style="width:100%;" onclick="addItem('PLJESKAVICE PUNJENE SIROM (480g)', 5.78, 1, 'kom')">DODAJ U KOŠARICU</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SEKCIJA 2: NA KILOGRAM -->
+        <h2 class="section-title" data-aos="fade-right">Meso na kilogram</h2>
+        <p style="margin-bottom: 30px; color:#aaa; font-size:0.9rem;">Odaberite željenu količinu pomoću kliznog slajdera.</p>
+        <div class="grid">
+            
+            <!-- Rinfuza 1 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Ćevapi</h3>
+                        <div class="price">8.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-1">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-1" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(1)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Ćevapi (rinfuza)', 8.00, 1)">DODAJ</button>
+                </div>
+            </div>
+
+            <!-- Rinfuza 2 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Šiš ćevapi</h3>
+                        <div class="price">9.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-2">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-2" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(2)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Šiš ćevapi (rinfuza)', 9.00, 2)">DODAJ</button>
+                </div>
+            </div>
+
+            <!-- Rinfuza 3 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Pljeskavice</h3>
+                        <div class="price">8.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-3">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-3" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(3)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Pljeskavice (rinfuza)', 8.00, 3)">DODAJ</button>
+                </div>
+            </div>
+
+            <!-- Rinfuza 4 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Pljeskavice sa sirom</h3>
+                        <div class="price">9.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-4">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-4" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(4)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Pljeskavice sa sirom (rinfuza)', 9.00, 4)">DODAJ</button>
+                </div>
+            </div>
+
+            <!-- Rinfuza 5 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Gurmanske pljeskavice</h3>
+                        <div class="price">9.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-5">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-5" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(5)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Gurmanske pljeskavice (rinfuza)', 9.00, 5)">DODAJ</button>
+                </div>
+            </div>
+
+            <!-- Rinfuza 6 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Svinjski vrat marinirani b.k.</h3>
+                        <div class="price">9.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-6">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-6" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(6)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Svinjski vrat b.k. (rinfuza)', 9.00, 6)">DODAJ</button>
+                </div>
+            </div>
+
+            <!-- Rinfuza 7 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Svinjski ražnjići marinirani</h3>
+                        <div class="price">9.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-7">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-7" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(7)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Svinjski ražnjići (rinfuza)', 9.00, 7)">DODAJ</button>
+                </div>
+            </div>
+
+            <!-- Rinfuza 8 -->
+            <div class="card" data-aos="fade-up">
+                <div class="card-body">
+                    <div>
+                        <h3>Pečenice</h3>
+                        <div class="price">8.00 EUR / kg</div>
+                        <div class="slider-container">
+                            <label>Količina: <span class="weight-display" id="w-val-8">1.0 kg</span></label>
+                            <input type="range" class="weight-slider" id="sl-8" min="0.1" max="20" step="0.1" value="1.0" oninput="updateSliderText(8)">
+                        </div>
+                    </div>
+                    <button class="btn-gold" onclick="addBulkItem('Pečenice (rinfuza)', 8.00, 8)">DODAJ</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BLAGAJNA I KOŠARICA -->
+        <section id="blagajna" class="checkout-section" data-aos="zoom-in">
+            <div>
+                <h2>Pregled narudžbe</h2>
+                <ul class="cart-summary-list" id="cart-items-list">
+                    <li style="color: #aaa;">Košarica je trenutno prazna.</li>
+                </ul>
+                <div class="cart-summary-list">
+                    <li class="total-row">
+                        <span>UKUPNO:</span>
+                        <span id="cart-total-price">0.00 EUR</span>
+                    </li>
+                </div>
+                <p class="note">* Napomena: Konačni račun može minimalno varirati ovisno o točnoj gramaži.</p>
+            </div>
+
+            <div>
+                <h2>Podaci za dostavu</h2>
+                <form id="shopForm">
+                    <input type="hidden" name="artikli" id="hidden-artikli-input">
+                    <input type="hidden" name="ukupna_cijena" id="hidden-total-input">
+
+                    <div>
+                        <label>Ime i Prezime *</label>
+                        <input type="text" name="ime" placeholder="Vaše ime i prezime" required>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label>Kontakt Mobitel / Telefon *</label>
+                            <input type="tel" name="telefon" placeholder="09X XXX XXXX" required>
+                        </div>
+						<div>
+							<label>E-mail Adresa *</label>
+							<input type="email" name="email" placeholder="vas@email.com" required>
+						</div>
+                    </div>
+                    <div>
+                        <label>Adresa za dostavu (Ulica, kućni broj, mjesto) *</label>
+                        <input type="text" name="adresa" placeholder="Npr. Zagrebačka ulica 10, Zagreb" required>
+                        <p class="note">Ako je lokacija predaleko, kontaktirati ćemo Vam se.</p>
+                    </div>
+                    <div>
+                        <label>Napomena za dostavu / proizvodnju</label>
+                        <textarea name="napomena" rows="3" placeholder="Napišite napomenu..."></textarea>
+                    </div>
+                    
+                    <p style="color: var(--gold); font-weight: 700; font-size: 0.9rem;">Način plaćanja: Pouzećem (Gotovina pri preuzimanju)</p>
+                    
+                    <button type="submit" id="checkoutBtn" class="btn-gold" style="width: 100%;" disabled>POTVRDI NARUDŽBU (MIN. 40 €)</button>
+                    <p id="submit-status" style="text-align: center; font-weight: 700; margin-top: 10px;"></p>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div data-aos="fade-up">
+            <img src="LogoFavicon.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
+            <p>© 2026 <strong>Catering Hills</strong> | HILLS GRILL brand</p>
+            <p style="opacity: 0.8; font-size: 0.9rem; margin-top: 15px; color: var(--gold);">Za izravne narudžbe i upite: <strong>hillsgrill.prodaja@gmail.com</strong></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        let cart = [];
+
+        // Funkcija koja pokazuje obavijest "Dodano u košaricu!"
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        function updateSliderText(id) {
+            const slider = document.getElementById('sl-' + id);
+            const display = document.getElementById('w-val-' + id);
+            display.innerText = parseFloat(slider.value).toFixed(1) + " kg";
+        }
+
+        function addItem(name, price, qty, unit) {
+            let existingItem = cart.find(item => item.name === name);
+            if(existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({ name: name, price: price, qty: qty, unit: unit });
+            }
+            showToast();
+            renderCart();
+        }
+
+        function addBulkItem(name, pricePerKg, sliderId) {
+            const slider = document.getElementById('sl-' + sliderId);
+            const weight = parseFloat(slider.value);
+            
+            let existingItem = cart.find(item => item.name === name);
+            if(existingItem) {
+                existingItem.qty = weight; 
+            } else {
+                cart.push({ name: name, price: pricePerKg, qty: weight, unit: 'kg' });
+            }
+            showToast();
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const cartList = document.getElementById('cart-items-list');
+            const barCount = document.getElementById('bar-count');
+            const barTotal = document.getElementById('bar-total');
+            const cartTotalPrice = document.getElementById('cart-total-price');
+            const shippingStatus = document.getElementById('shipping-status');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            
+            if (cart.length === 0) {
+                cartList.innerHTML = `<li style="color: #aaa;">Košarica je trenutno prazna.</li>`;
+                barCount.innerText = "0";
+                barTotal.innerText = "0.00 EUR";
+                cartTotalPrice.innerText = "0.00 EUR";
+                shippingStatus.innerHTML = `Minimalna narudžba za dostavu je <span style="color:var(--gold);">40.00 EUR</span>.`;
+                shippingStatus.style.color = "white";
+                checkoutBtn.disabled = true;
+                checkoutBtn.innerText = "MINIMALNA NARUDŽBA 40 €";
+                return;
+            }
+
+            cartList.innerHTML = "";
+            let total = 0;
+            let totalItems = 0;
+            let emailItemsString = ""; 
+
+            cart.forEach((item, index) => {
+                let itemCost = item.price * item.qty;
+                total += itemCost;
+                totalItems += (item.unit === 'kom') ? item.qty : 1;
+
+                let displayQty = item.unit === 'kg' ? item.qty.toFixed(1) : item.qty;
+                
+                // Ako su paketi (kom), pišemo "x 1 kom", ako je rinfuza (kg), pišemo samo "2.9 kg" bez slova x
+                let kolicinaTekst = item.unit === 'kom' ? `x ${displayQty} kom` : `${displayQty} kg`;
+                
+                cartList.innerHTML += `
+                    <li style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #222;">
+                        <div style="flex-grow: 1; padding-right: 15px;">
+                            <strong style="display: block; color: var(--white); font-size: 0.95rem; margin-bottom: 4px;">${item.name}</strong>
+                            <span style="color: #aaa; font-size: 0.85rem;">${kolicinaTekst}</span>
+                        </div>
+                        <div style="text-align: right; min-width: 90px; flex-shrink: 0;">
+                            <span style="font-weight: 700; color: var(--gold); display: block; margin-bottom: 4px;">${itemCost.toFixed(2)} EUR</span>
+                            <span class="remove-item" onclick="removeItem(${index})" style="color: #ff4d4d; cursor: pointer; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Ukloni ✕</span>
+                        </div>
+                    </li>
+                `;
+
+                emailItemsString += `${item.name} (${displayQty} ${item.unit}) - ${itemCost.toFixed(2)} EUR; `;
+            });
+
+            barCount.innerText = totalItems;
+            barTotal.innerText = total.toFixed(2) + " EUR";
+            cartTotalPrice.innerText = total.toFixed(2) + " EUR";
+
+            document.getElementById('hidden-artikli-input').value = emailItemsString;
+            document.getElementById('hidden-total-input').value = total.toFixed(2) + " EUR";
+
+            if (total >= 40) {
+                shippingStatus.innerHTML = `✓ Ostvarili ste pravo na BESPLATNU DOSTAVU!`;
+                shippingStatus.style.color = "var(--green)";
+                checkoutBtn.disabled = false;
+                checkoutBtn.innerText = "POTVRDI NARUDŽBU";
+            } else {
+                let diff = 40 - total;
+                shippingStatus.innerHTML = `Fali još <span style="color:var(--gold); font-weight:900;">${diff.toFixed(2)} €</span> do besplatne dostave.`;
+                shippingStatus.style.color = "white";
+                checkoutBtn.disabled = true;
+                checkoutBtn.innerText = `NEDOSTAJE JOŠ ${diff.toFixed(2)} EUR`;
+            }
+        }
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby2_oNLQkfXlLw6GGzPyElh63xQ4g93nKaDpJgCy4eS0CwCHOEecmtenq5maDUEWpd2tg/exec'; 
+        const form = document.getElementById('shopForm');
+        const statusTxt = document.getElementById('submit-status');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            checkoutBtn.disabled = true;
+            statusTxt.innerText = "Slanje narudžbe u tijeku...";
+            statusTxt.style.color = "var(--gold)";
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new FormData(form),
+                mode: 'no-cors'
+            })
+            .then(() => {
+                statusTxt.innerHTML = `<span style='color: var(--green);'>✓ Narudžba uspješno poslana! Javit ćemo Vam se u što kraćem roku s detaljima.</span>`;
+                form.reset();
+                cart = [];
+                renderCart();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                statusTxt.innerText = "Greška pri slanju. Molimo pošaljite narudžbu izravno na mail.";
+                statusTxt.style.color = "#ff4d4d";
+                checkoutBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
