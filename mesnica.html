@@ -97,7 +97,6 @@
         .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .card h3 { color: var(--white); font-size: 1.25rem; margin-bottom: 10px; font-weight: 700; min-height: 50px; }
         .card .price { color: var(--gold); font-size: 1.4rem; font-weight: 900; margin-bottom: 15px; }
-        .card .pack-list { font-size: 0.85rem; color: #aaa; margin-bottom: 20px; list-style-type: square; padding-left: 20px; }
         
         /* Sliders for KG products */
         .slider-container { margin: 15px 0; }
@@ -181,7 +180,6 @@
 </head>
 <body>
 
-    <!-- Pop-up obavijest -->
     <div id="toast" class="cart-toast">Dodano u košaricu! 🥩</div>
 
     <nav>
@@ -200,138 +198,23 @@
 
     <div class="container">
         
-        <!-- STICKY / FIXED CART BAR -->
         <div class="cart-bar">
-            <div class="cart-info-text">
-                <h3>Košarica: <span id="bar-count">0</span> art.</h3>
-                <p>Ukupno: <span id="bar-total" style="font-weight: 900; color: var(--white);">0.00 EUR</span></p>
-            </div>
-            <div>
-                <a href="#blagajna" class="btn-gold" style="font-size: 0.8rem; padding: 10px 20px;">BLAGAJNA</a>
-            </div>
-            <div class="shipping-alert" id="shipping-status">
-                Minimalna narudžba za dostavu je 40.00 EUR.
-            </div>
-        </div>
+			<div class="cart-info-text">
+				<h3>Košarica: <span id="bar-count">0</span> art.</h3>
+				<p>Ukupno: <span id="bar-total" style="font-weight: 900; color: var(--white);">0.00 EUR</span></p>
+			</div>
+			<div>
+				<a href="#blagajna" class="btn-gold" style="font-size: 0.8rem; padding: 10px 20px;">BLAGAJNA</a>
+			</div>
+			<div class="shipping-alert" id="shipping-status">
+				Minimalna količina za narudžbu i besplatnu dostavu je 6.0 kg - Zagreb i okolica.
+			</div>
+		</div>
 
-        <!-- SEKCIJA 1: PAKETI -->
-        <h2 class="section-title" data-aos="fade-right">HILLS GRILL PAKETI</h2>
-        <div class="grid">
-            
-            <!-- Paket 1 -->
-            <div class="card" data-aos="fade-up">
-                <div class="card-img"><img src="Gurmanska.jpeg" alt="HILLS GURMAN GRILL PAKET"></div>
-                <div class="card-body">
-                    <div>
-                        <h3>HILLS GURMAN GRILL PAKET (554g)</h3>
-                        <ul class="pack-list">
-                            <li>2x Šiš ćevap</li>
-                            <li>2x Gurmanska pljeskavica</li>
-                            <li>6x Gurmanski ćevap</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price">5.25 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
-                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS GURMAN GRILL PAKET (554g)', 5.25, 1, 'kom')">DODAJ U KOŠARICU</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paket 2 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-img"><img src="HillsClassic.JPG" alt="HILLS CLASIC GRILL PAKET"></div>
-                <div class="card-body">
-                    <div>
-                        <h3>HILLS CLASIC GRILL PAKET (630g)</h3>
-                        <ul class="pack-list">
-                            <li>6x Ćevap</li>
-                            <li>2x Pljeskavica</li>
-                            <li>2x Pljeskavica punjena sirom</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price">5.78 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
-                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS CLASIC GRILL PAKET (630g)', 5.78, 1, 'kom')">DODAJ U KOŠARICU</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paket 3 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-img"><img src="Cevapi.jpg" alt="HILLS ĆEVAPČIĆI"></div>
-                <div class="card-body">
-                    <div>
-                        <h3>HILLS ĆEVAPČIĆI (500g)</h3>
-                        <ul class="pack-list">
-                            <li>20 Ćevapčića</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price">4.73 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
-                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS ĆEVAPČIĆI (500g)', 4.73, 1, 'kom')">DODAJ U KOŠARICU</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paket 4 -->
-            <div class="card" data-aos="fade-up">
-                <div class="card-img"><img src="Pljeskavica.JPG" alt="HILLS PLJESKAVICE"></div>
-                <div class="card-body">
-                    <div>
-                        <h3>HILLS PLJESKAVICE (600g)</h3>
-                        <ul class="pack-list">
-                            <li>5 Pljeskavica</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price">5.04 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
-                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS PLJESKAVICE (600g)', 5.04, 1, 'kom')">DODAJ U KOŠARICU</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paket 5 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-img"><img src="SisCevapi.jpg" alt="HILLS ŠIŠ ĆEVAPI"></div>
-                <div class="card-body">
-                    <div>
-                        <h3>HILLS ŠIŠ ĆEVAPI (500g)</h3>
-                        <ul class="pack-list">
-                            <li>6 Šiš ćevapa</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price">5.78 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
-                        <button class="btn-gold" style="width:100%;" onclick="addItem('HILLS ŠIŠ ĆEVAPI (500g)', 7.23, 1, 'kom')">DODAJ U KOŠARICU</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paket 6 -->
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-img"><img src="PljeskaviceSir.jpg" alt="HILLS PLJESKAVICE PUNJENE SIROM"></div>
-                <div class="card-body">
-                    <div>
-                        <h3>PLJESKAVICE PUNJENE SIROM (480g)</h3>
-                        <ul class="pack-list">
-                            <li>4 Punjene pljeskavice</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price">5.78 EUR <span style="font-size: 0.7rem; color: #888;">(S PDV-om)</span></div>
-                        <button class="btn-gold" style="width:100%;" onclick="addItem('PLJESKAVICE PUNJENE SIROM (480g)', 5.78, 1, 'kom')">DODAJ U KOŠARICU</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- SEKCIJA 2: NA KILOGRAM -->
         <h2 class="section-title" data-aos="fade-right">Meso na kilogram</h2>
         <p style="margin-bottom: 30px; color:#aaa; font-size:0.9rem;">Odaberite željenu količinu pomoću kliznog slajdera.</p>
         <div class="grid">
             
-            <!-- Rinfuza 1 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -346,7 +229,6 @@
                 </div>
             </div>
 
-            <!-- Rinfuza 2 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -361,7 +243,6 @@
                 </div>
             </div>
 
-            <!-- Rinfuza 3 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -376,7 +257,6 @@
                 </div>
             </div>
 
-            <!-- Rinfuza 4 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -391,7 +271,6 @@
                 </div>
             </div>
 
-            <!-- Rinfuza 5 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -406,7 +285,6 @@
                 </div>
             </div>
 
-            <!-- Rinfuza 6 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -421,7 +299,6 @@
                 </div>
             </div>
 
-            <!-- Rinfuza 7 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -436,7 +313,6 @@
                 </div>
             </div>
 
-            <!-- Rinfuza 8 -->
             <div class="card" data-aos="fade-up">
                 <div class="card-body">
                     <div>
@@ -453,7 +329,6 @@
 
         </div>
 
-        <!-- BLAGAJNA I KOŠARICA -->
         <section id="blagajna" class="checkout-section" data-aos="zoom-in">
             <div>
                 <h2>Pregled narudžbe</h2>
@@ -501,7 +376,7 @@
                     
                     <p style="color: var(--gold); font-weight: 700; font-size: 0.9rem;">Način plaćanja: Pouzećem (Gotovina pri preuzimanju)</p>
                     
-                    <button type="submit" id="checkoutBtn" class="btn-gold" style="width: 100%;" disabled>POTVRDI NARUDŽBU (MIN. 40 €)</button>
+                    <button type="submit" id="checkoutBtn" class="btn-gold" style="width: 100%;" disabled>MINIMALNA NARUDŽBA 6 KG</button>
                     <p id="submit-status" style="text-align: center; font-weight: 700; margin-top: 10px;"></p>
                 </form>
             </div>
@@ -581,10 +456,10 @@
                 barCount.innerText = "0";
                 barTotal.innerText = "0.00 EUR";
                 cartTotalPrice.innerText = "0.00 EUR";
-                shippingStatus.innerHTML = `Minimalna narudžba za dostavu je <span style="color:var(--gold);">40.00 EUR</span>.`;
+                shippingStatus.innerHTML = `Minimalna količina za narudžbu je <span style="color:var(--gold);">6.0 kg</span>.`;
                 shippingStatus.style.color = "white";
                 checkoutBtn.disabled = true;
-                checkoutBtn.innerText = "MINIMALNA NARUDŽBA 40 €";
+                checkoutBtn.innerText = "MINIMALNA NARUDŽBA 6 KG";
                 return;
             }
 
@@ -596,12 +471,10 @@
             cart.forEach((item, index) => {
                 let itemCost = item.price * item.qty;
                 total += itemCost;
-                totalItems += (item.unit === 'kom') ? item.qty : 1;
+                totalItems += 1; // Svaki artikl se broji kao stavka
 
-                let displayQty = item.unit === 'kg' ? item.qty.toFixed(1) : item.qty;
-                
-                // Ako su paketi (kom), pišemo "x 1 kom", ako je rinfuza (kg), pišemo samo "2.9 kg" bez slova x
-                let kolicinaTekst = item.unit === 'kom' ? `x ${displayQty} kom` : `${displayQty} kg`;
+                let displayQty = item.qty.toFixed(1);
+                let kolicinaTekst = `${displayQty} kg`;
                 
                 cartList.innerHTML += `
                     <li style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #222;">
@@ -616,7 +489,13 @@
                     </li>
                 `;
 
-                emailItemsString += `${item.name} (${displayQty} ${item.unit}) - ${itemCost.toFixed(2)} EUR; `;
+                emailItemsString += `${item.name} (${displayQty} kg) - ${itemCost.toFixed(2)} EUR; `;
+            });
+            
+            // Izračun ukupne težine u kilogramima
+            let totalWeight = 0;
+            cart.forEach(item => {
+                totalWeight += item.qty;
             });
 
             barCount.innerText = totalItems;
@@ -626,17 +505,18 @@
             document.getElementById('hidden-artikli-input').value = emailItemsString;
             document.getElementById('hidden-total-input').value = total.toFixed(2) + " EUR";
 
-            if (total >= 40) {
-                shippingStatus.innerHTML = `✓ Ostvarili ste pravo na BESPLATNU DOSTAVU!`;
+            // Provjera kilogramskog praga umjesto eura
+            if (totalWeight >= 6) {
+                shippingStatus.innerHTML = `✓ Ostvarena minimalna količina (${totalWeight.toFixed(1)} kg) za dostavu!`;
                 shippingStatus.style.color = "var(--green)";
                 checkoutBtn.disabled = false;
                 checkoutBtn.innerText = "POTVRDI NARUDŽBU";
             } else {
-                let diff = 40 - total;
-                shippingStatus.innerHTML = `Fali još <span style="color:var(--gold); font-weight:900;">${diff.toFixed(2)} €</span> do besplatne dostave.`;
+                let diffWeight = 6 - totalWeight;
+                shippingStatus.innerHTML = `Trenutno imate <span style="color:var(--gold); font-weight:900;">${totalWeight.toFixed(1)} kg</span>. Fali još ${diffWeight.toFixed(1)} kg do minimalne narudžbe.`;
                 shippingStatus.style.color = "white";
                 checkoutBtn.disabled = true;
-                checkoutBtn.innerText = `NEDOSTAJE JOŠ ${diff.toFixed(2)} EUR`;
+                checkoutBtn.innerText = `NEDOSTAJE JOŠ ${diffWeight.toFixed(1)} KG`;
             }
         }
 
@@ -657,7 +537,7 @@
                 mode: 'no-cors'
             })
             .then(() => {
-                statusTxt.innerHTML = `<span style='color: var(--green);'>✓ Narudžba uspješno poslana! Javit ćemo Vam se u što kraćem roku s detaljima.</span>`;
+                statusTxt.innerHTML = `<span style='color: var(--green);'>✓ Narudžba uspješno poslana!</span>`;
                 form.reset();
                 cart = [];
                 renderCart();
