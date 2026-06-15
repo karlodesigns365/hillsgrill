@@ -391,31 +391,31 @@
 
     let currentLang = 'hr';
 
-    function changeLang(lang, event) {
+function changeLang(lang, event) {
         currentLang = lang;
         
-        // 1. Tekstovi
+        // 1. Automatski prevedi sve elemente s data-key atributom (uključujući i footer!)
         document.querySelectorAll('[data-key]').forEach(elem => {
             const key = elem.getAttribute('data-key');
-            if (translations[lang][key]) {
+            if (translations[lang] && translations[lang][key]) {
                 elem.innerHTML = translations[lang][key];
             }
         });
 
-        // 2. Footer rights (posebno zbog strong taga)
-        const f = document.querySelector('[data-key="rights"]');
-        if (lang === 'hr') f.innerHTML = "Sva prava <strong>pridržana</strong>";
-        if (lang === 'de') f.innerHTML = "Alle Rechte <strong>vorbehalten</strong>";
-        if (lang === 'en') f.innerHTML = "All rights <strong>reserved</strong>";
+        // 2. Prevođenje placeholdera u formi (Sigurno provjeravamo postoje li elementi)
+        const inputIme = document.querySelector('input[name="ime"]');
+        const inputTvrtka = document.querySelector('input[name="tvrtka"]');
+        const inputOib = document.querySelector('input[name="oib"]');
+        const inputEmail = document.querySelector('input[name="email"]');
+        const txtPoruka = document.querySelector('textarea[name="poruka"]');
 
-        // 3. PLACEHOLDERI (Ovdje je bio problem)
-        document.querySelector('input[name="ime"]').placeholder = translations[lang].phName;
-        document.querySelector('input[name="tvrtka"]').placeholder = translations[lang].phCompany;
-        document.querySelector('input[name="oib"]').placeholder = translations[lang].phOib;
-        document.querySelector('input[name="email"]').placeholder = translations[lang].phEmail;
-        document.querySelector('textarea[name="poruka"]').placeholder = translations[lang].phMsg;
+        if(inputIme) inputIme.placeholder = translations[lang].phName;
+        if(inputTvrtka) inputTvrtka.placeholder = translations[lang].phCompany;
+        if(inputOib) inputOib.placeholder = translations[lang].phOib;
+        if(inputEmail) inputEmail.placeholder = translations[lang].phEmail;
+        if(txtPoruka) txtPoruka.placeholder = translations[lang].phMsg;
 
-        // 4. Update aktivne zastavice
+        // 3. Update aktivne zastavice
         document.querySelectorAll('.lang-flag').forEach(flag => flag.classList.remove('active'));
         if (event) event.currentTarget.classList.add('active');
     }
